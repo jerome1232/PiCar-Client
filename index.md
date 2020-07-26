@@ -11,7 +11,7 @@ view it's Mjpeg stream from a piCar, and control it using a virtual joystick.
 
 These will need to be installed on the Pi.
 
-- [PiCar](https://github.com/jerome1232/PiCar): Allows control of a PiCar over the network.
+- [PiCar](https://jerome1232.github.io/PiCar/): Allows control of a PiCar over the network.
 - [Mjpeg Streamer](https://github.com/jacksonliam/mjpg-streamer): Allows pi car to stream mjpeg of camera over network.
   
 I'd recomend setting the Pi up as it's own access point that you connect to via WiFi
