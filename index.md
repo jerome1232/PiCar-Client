@@ -18,11 +18,11 @@ I'd recommend setting the Pi up as it's own access point that you connect to via
 so that it's not limited to staying near another access point. Note after doing this, if you want
 the Pi to have an internet connection you will need to connect it with ethernet.
 
-To config Pi as it's own access point: 
-Adapted from: [thepie.io](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/)
-the main difference is we aren't having it act as a bridge to get internet, we won't need internet.
+To config Pi as it's own access point:
 
-```shell script
+Adapted from: [thepie.io](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/)
+
+```sh
 # Update repositories, ensure pi OS is up to date
 sudo apt update && sudo apt upgrade -y
 # Install hostapd and dnsmasq
@@ -38,7 +38,7 @@ sudo nano /etc/dhcpcd.conf
 An editor will open up and inside you should put the following at the end. If you are using a usb wifi stick
 , the interface may be different. This configures the Pi's ip address.
 
-```shell script
+```sh
 interface wlan0
 static ip_address=192.168.0.10/24
 ```
@@ -48,7 +48,7 @@ Save that with ctrl+o, exit nano with ctrl+x
 Once that is done, edit the dnsmasq configuration file. This will allow the Pi to act as a
 dhcp server handing out IP addresses to clients that connect to it.
 
-```shell script
+```sh
 # First just move the original config file, so that it's recoverable if wanted
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 # Then edit a new config file with nano
@@ -57,7 +57,7 @@ sudo nano /etc/dnsmasq.conf
 
 Again, a nano editor window will appear and you need to enter the line below.
 
-```shell script
+```sh
 interface=wlan0
     dhcp-range=192.168.0.11,192.168.0.30,255.255.255.0,24h
 ```
@@ -65,13 +65,13 @@ interface=wlan0
 Now the last step is to configure the Pi's wifi to act as an access point. You should change the
 password to your own unique password.
 
-```shell script
+```sh
 sudo nano /etc/hostapd/hostapd.conf
 ```
 
 Add the lines below, this will need adjustments if you aren't using the built in WiFi
 
-```shell script
+```sh
 interface=wlan0
 driver=nl80211
 ssid=PiCar
@@ -91,25 +91,25 @@ rsn_pairwise=CCMP
 
 The last step would be to tell hostapd where the config file is.
 
-```shell script
+```sh
 sudo nano /etc/default/hostapd
 ```
 
 Find the line below and delete the '#' in front of it.
 
-```shell script
+```sh
 # DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
 Becomes:
 
-```shell script
+```sh
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
 Save, exit, reboot the pi
 
-```shell script
+```sh
 sudo reboot now
 ```
 
