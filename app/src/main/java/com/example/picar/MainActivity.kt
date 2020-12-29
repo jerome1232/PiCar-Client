@@ -19,7 +19,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val view: MjpegView? = findViewById(R.id.piCam)
         view!!.isAdjustHeight = true
-        view.setUrl("http://192.168.0.109:8080/?action=stream")
+        var ip = "192.168.0.10"
+        var port = "8080"
+        var param = "/?action=stream"
+        var piUrl = "http://" + ip + ":" + port + param
+        view.setUrl(piUrl)
         view.mode1 = MjpegView.MODE_STRETCH
         view.isRecycleBitmap1 = true
     }

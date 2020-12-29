@@ -19,8 +19,10 @@ so that it's not limited to staying near another access point. Note after doing 
 the Pi to have an internet connection you will need to connect it with ethernet.
 
 To config Pi as it's own access point: 
+
 Adapted from: [thepie.io](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/)
-the main difference is we aren't having it act as a bridge to get internet, we won't need internet.
+
+The main difference is we aren't having it act as a bridge to get internet, we won't need internet.
 
 ```shell script
 # Update repositories, ensure pi OS is up to date
